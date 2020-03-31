@@ -133,12 +133,12 @@ ENV_DEFS.defaults.LLSteering = {
         let west = constrain(pow(1-h+map(u.noise(0),0,1,-0.3,0.3)+map(j,0,HEIGHT,-0.3,0.3),2)*4,0,4);
         // ridging and trades
         let ridging = constrain(u.noise(1)+map(j,0,HEIGHT,0.3,-0.3),0,1);
-        let trades = constrain(pow(0.35+h+map(ridging,0,1,-0.3,0.3),2)*3,0,3);
+        let trades = constrain(pow(0.275+h+map(ridging,0,1,-0.3,0.3),2)*3,0,3);
         let tAngle = map(h,0.9,1,511*PI/512,15.75*PI/16); // trades angle
         // noise angle
         let a = map(u.noise(3),0,1,0,4*TAU);
         // noise magnitude
-        let m = pow(5,map(u.noise(3),4,4,4,4));
+        let m = pow(4.4,map(u.noise(3),4,4,4,4));
 
         // apply to vector
         u.vec.rotate(a);
@@ -319,7 +319,7 @@ ENV_DEFS.defaults.SSTAnomaly = {
         v = log(v);
         let r;
         if(u.modifiers.r!==undefined) r = u.modifiers.r;
-        else r = map(y,0,HEIGHT,3,6);
+        else r = map(y,0,HEIGHT,4,6);
         v = -r*v;
         v = v*i;
         if(u.modifiers.bigBlobBase!==undefined && v>u.modifiers.bigBlobExponentThreshold) v += pow(u.modifiers.bigBlobBase,v-u.modifiers.bigBlobExponentThreshold)-1;
